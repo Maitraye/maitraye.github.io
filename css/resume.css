@@ -164,6 +164,13 @@ a:hover, a:focus, a:active {
   font-size: 0.95rem;
 }
 
+#gallery img {
+  max-height: 500px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
 /*Portfolio*/
 .portfolio-item {
   display: block;
