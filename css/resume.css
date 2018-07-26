@@ -151,12 +151,18 @@ a:hover, a:focus, a:active {
   color: #226577;
 }
 
-.justified{
-  text-align: justify;
-}
-
 .cursorShown{
     cursor:pointer;
+    color: #38a0bd;
+}
+
+.cursorShown:hover, .cursorShown:focus, .cursorShown:active {
+  color: #226577;
+  text-decoration: underline;
+}
+
+.justified{
+  text-align: justify;
 }
 
 #publications p {
