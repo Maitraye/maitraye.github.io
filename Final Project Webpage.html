@@ -13081,9 +13081,6 @@ div#notebook {
     display: block;
     page-break-inside: avoid; 
   }
-  figure .center {
-    text-align: center;
-  }
 }
 </style>
 
@@ -13131,8 +13128,9 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Abstract">Abstract<a class="anchor-link" href="#Abstract">&#182;</a></h1><p>In this project, we have applied machine learning (ML) and natural language processing (NLP) techniques to automatically generate plot keyphrases and summaries from detailed movie synopses produced by users of the Internet Movie Database (IMDb) and Wikipedia. To build our build our synopsis corpus, we used the MPST dataset, which contains a set of 14,828 movie synopses produced by the users of IMDb and Wikipedia. We collected the user generated summaries of 14,820 of these movies by scraping IMDb. We also used the Open Movie Database (OMDb) to collect the user generated keyphrases of 11,664 movies present in our synopsis corpus.</p>
 <p>We defined the keyphrase extraction task as a binary classification problem: we generated candidate phrases and calculated nine attributes of each phrase from our synopses corpus. The final attribute classifies whether the phrase is a ‘keyphrase’ or ‘non-keyphrase’ by matching with user-generated keyphrases. We then divide our dataset into training and test sets and ran several supervised classifiers including Decision Tree, Naive Bayes, Linear SVC, SVM, Logistic Regression, Random Forest, Boosted Decision Tree and Gradient Boosting. We also ran Stacked Classifier on the best five models with Logistic Regression as the meta-classifier. Stacked Classifier and Random Forest both resulted in the highest average precision 0.22. For summarization, we performed extractive and unsupervised techniques on the user-generated synopses using NLTK, TextRank and TextTeaser. Using the Rouge metric, we compared the machine-generated summaries to the human generated summaries in our dataset. TextTeaser gives the best Precision in terms of Rouge-1 (0.27) and Rouge-2 (0.048), while TextRank gives the best Precision (0.22), Recall (0.32) and F1-score (0.24) in terms of Rouge-l.</p>
+<br>
 <figure><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/Stacked.png?raw=true" alt="" width = "400">
-  <figcaption class="center">
+  <figcaption style="text-align: center;">
  Precision-Recall Curve for the Stacked Classifier
  </figcaption>
 </figure>
@@ -13176,10 +13174,10 @@ div#notebook {
 <p>Following this procedure, we prepared a dataset of 1,330,970 unique entries from our corpus. We randomly split this dataset (90/10) into training and test sets using stratification on the isKeyphrase (i.e, class) attribute. We did this as our dataset is not balanced (only 1.39% entries with isKeyphrase = True).</p>
 <p>Then, we tested the following learners from scikit-learn library on our dataset: Decision Tree, Naive Bayes, Linear SVC, Support Vector Machine (SVM), and Logistic Regression. For Linear Regression, we used class weight = "balanced" and varied the value of C parameter (C = 0.1, 1, 10, 50, 100) and found that C=10.0 gave the best results. We found that ensemble methods provided better results. So, we used bagging classifier using each of these learners as base estimators with number of estimators = 100 and max samples = 0.1. We also tried some other ensemble learners such as Random Forest, Boosted Decision Tree and Gradient Boosting. Finally, we ran Stacked Classifier from mlxtend library with Bagged Logistic Regression as the meta classifier and five best classifieres we tested so far (Random Forest, Logistic Regression, Bagged Decision Tree, Boosted Decision Tree, and Gradient Boosting) </p>
 <h3 id="3.2-Evaluation">3.2 Evaluation<a class="anchor-link" href="#3.2-Evaluation">&#182;</a></h3><p>For evaluation, we looked at average precision score. From our analysis, Random Forest and the Stacked Classifier resulted in the best average precision (0.22 and 0.21 respectively). Several Precision-Recall curves are shown below. Detailed results from all the classifiers can obtained from <a href="keyphrase classifiers.html">this</a> Jupyter Notebook.</p>
-<h4 id="Bagged-Decision-Tree:">Bagged Decision Tree:<a class="anchor-link" href="#Bagged-Decision-Tree:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/BaggedDT.png?raw=true" alt="baggedDT" width="400"></p>
+<h4 id="Bagged-Decision-Tree:">Bagged Decision Tree (number of estimators = 100, max samples = 0.1):<a class="anchor-link" href="#Bagged-Decision-Tree:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/BaggedDT.png?raw=true" alt="baggedDT" width="400"></p>
 <h4 id="Bagged-Logistic-Regression:">Bagged Logistic Regression (class weight = balanced, C=10.0): <a class="anchor-link" href="#Bagged-Logistic-Regression:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/BaggedLR.png?raw=true" alt="baggedLR" width="400"></p>
-<h4 id="Gradient-Boosting:">Gradient Boosting:<a class="anchor-link" href="#Gradient-Boosting:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/Gradient.png?raw=true!" alt="GB" width="400"></p>
-<h4 id="Random-Forest:">Random Forest (number of trees = 100) <a class="anchor-link" href="#Random-Forest:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/RandomForest.png?raw=true" alt="RF" width="400"></p>
+<h4 id="Gradient-Boosting:">Gradient Boosting (number of estimators = 100):<a class="anchor-link" href="#Gradient-Boosting:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/Gradient.png?raw=true!" alt="GB" width="400"></p>
+<h4 id="Random-Forest:">Random Forest (number of estimators = 100) <a class="anchor-link" href="#Random-Forest:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/RandomForest.png?raw=true" alt="RF" width="400"></p>
 <h4 id="Stacked-Classifier-with-Logistic-Regression-as-meta-classifier:">Stacked Classifier with Logistic Regression as meta-classifier:<a class="anchor-link" href="#Stacked-Classifier-with-Logistic-Regression-as-meta-classifier:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/Stacked.png?raw=true" alt="Stacked" width="400"></p>
 
 </div>
