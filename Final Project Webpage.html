@@ -13127,7 +13127,12 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Abstract">Abstract<a class="anchor-link" href="#Abstract">&#182;</a></h1><p>In this project, we have applied machine learning (ML) and natural language processing (NLP) techniques to automatically generate plot keyphrases and summaries from detailed movie synopses produced by users of the Internet Movie Database (IMDb) and Wikipedia. To build our build our synopsis corpus, we used the MPST dataset, which contains a set of 14,828 movie synopses produced by the users of IMDb and Wikipedia. We collected the user generated summaries of 14,820 of these movies by scraping IMDb. We also used the Open Movie Database (OMDb) to collect the user generated keyphrases of 11,664 movies present in our synopsis corpus.</p>
-<p>We defined the keyphrase extraction task as a binary classification problem: we generated candidate phrases and calculated nine attributes of each phrase from our synopses corpus. The final attribute classifies whether the phrase is a ‘keyphrase’ or ‘non-keyphrase’ by matching with user-generated keyphrases. We then divide our dataset into training and test sets and ran several supervised classifiers such as Decision Tree, Naive Bayes, Linear SVC, SVM, Logistic Regression, Random Forest, Boosted Decision Tree and Gradient Boosting. We also ran Stacked Classifier on the best five models. Stacked Classifier and Random Forest both resulted in the highest average precision 0.22. For summarization, we performed extractive and unsupervised techniques on the user-generated synopses using NLTK, TextRank and TextTeaser. Using the Rouge metric, we compared the machine-generated summaries to the human generated summaries in our dataset. TextTeaser gives the best Precision in terms of Rouge-1 (0.27) and Rouge-2 (0.048), while TextRank gives the best Precision (0.22), Recall (0.32) and F1-score (0.24) in terms of Rouge-l.</p>
+<p>We defined the keyphrase extraction task as a binary classification problem: we generated candidate phrases and calculated nine attributes of each phrase from our synopses corpus. The final attribute classifies whether the phrase is a ‘keyphrase’ or ‘non-keyphrase’ by matching with user-generated keyphrases. We then divide our dataset into training and test sets and ran several supervised classifiers including Decision Tree, Naive Bayes, Linear SVC, SVM, Logistic Regression, Random Forest, Boosted Decision Tree and Gradient Boosting. We also ran Stacked Classifier on the best five models with Logistic Regression as the meta-classifier. Stacked Classifier and Random Forest both resulted in the highest average precision 0.22. For summarization, we performed extractive and unsupervised techniques on the user-generated synopses using NLTK, TextRank and TextTeaser. Using the Rouge metric, we compared the machine-generated summaries to the human generated summaries in our dataset. TextTeaser gives the best Precision in terms of Rouge-1 (0.27) and Rouge-2 (0.048), while TextRank gives the best Precision (0.22), Recall (0.32) and F1-score (0.24) in terms of Rouge-l.</p>
+<figure><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/Stacked.png?raw=true" alt="" width = "400">
+  <figcaption>
+ Precision-Recall Curve for the Stacked Classifier
+ </figcaption>
+</figure>
 
 </div>
 </div>
@@ -13152,8 +13157,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.-Keyphrase-Extraction">3. Keyphrase Extraction<a class="anchor-link" href="#3.-Keyphrase-Extraction">&#182;</a></h1><h3 id="3.1-Approach">3.1 Approach<a class="anchor-link" href="#3.1-Approach">&#182;</a></h3><p>Following prior researches in keyphrase extraction, we formalized our problem as a classification task in which a supervised classifier is trained and used to categorize phrases as keyphrases or non-keyphrases. This task consists of three steps: candidate phrase identification, feature selection, keyphrase identification (i.e., classification). At first, we cleaned each synopsis in our corpus to remove punctuations, digits and non-letter symbols and generated unigram, bigram, and trigram word-phrases from each synopsis. Next, we removed those phrases that contained any proper noun, since character names are very frequent in movie synopses which cannot be considered as keyphrases. We also removed those phrases that contained stopwords at the beginning or end, but kept those that contained stopward in the middle (e.g., based on novel). Finally, we generated candidate phrases by stemming using Porter stemmer. Following this procedure, we created a vocabulary of 1,819,548 phrases from our corpus.</p>
-<p>Next, we extracted features to build the classifiers. Following prior approaches, we selected 9 features that were most relevant to our movie corpus:</p>
+<h1 id="3.-Keyphrase-Extraction">3. Keyphrase Extraction<a class="anchor-link" href="#3.-Keyphrase-Extraction">&#182;</a></h1><h3 id="3.1-Approach">3.1 Approach<a class="anchor-link" href="#3.1-Approach">&#182;</a></h3><p>Following prior researches [1, 2] in keyphrase extraction, we formalized our problem as a classification task in which a supervised classifier is trained and used to categorize phrases as keyphrases or non-keyphrases. This task consists of three steps: candidate phrase identification, feature selection, keyphrase identification (i.e., classification). At first, we cleaned each synopsis in our corpus to remove punctuations, digits and non-letter symbols and generated unigram, bigram, and trigram word-phrases from each synopsis. Next, we removed those phrases that contained any proper noun, since character names are very frequent in movie synopses which cannot be considered as keyphrases. We also removed those phrases that contained stopwords at the beginning or end, but kept those that contained stopward in the middle (e.g., based on novel). Finally, we generated candidate phrases by stemming using Porter stemmer. Following this procedure, we created a vocabulary of 1,819,548 phrases from our corpus.</p>
+<p>Next, we extracted features to build the classifiers. Following prior approaches [1, 2], we selected 9 features that were most relevant to our movie corpus:</p>
 <ol>
 <li>Term frequency (TF) (calculated using scikit-learn)</li>
 <li>Term frequency-inverse document frequency (TFxIDF) (calculated using scikit-learn)</li>
@@ -13166,12 +13171,13 @@ div#notebook {
 <li>isKeyphrase: boolean class attribute, whether the phrase occurs in the user-generated keyphrases list. We created bigrams and trigrams from user-generated keyphrases that contained three or more words (no stopwords in the beginning or end of n-gram) to match with corresponding candidate phrase. For example, one candidate phrase such as ‘based on novel’ could be matched with user-generated keyphrase “based on novel or book”.</li>
 </ol>
 <p>Following this procedure, we prepared a dataset of 1,330,970 unique entries from our corpus. We randomly split this dataset (90/10) into training and test sets using stratification on the isKeyphrase (i.e, class) attribute. We did this as our dataset is not balanced (only 1.39% entries with isKeyphrase = True).</p>
-<p>Then, we tested the following learners from scikit-learn library on our dataset: Decision Tree, Naive Bayes, Linear SVC, Support Vector Machine (SVM), and Logistic Regression using bagging classifiers with number of estimators = 100, since we found that ensemble methods provided better results. We also tried some other ensemble learners such as Random Forest, Boosted Decision Tree and Gradient Boosting. We also ran Stacked Classifier with Logistic Regression as the meta classifier.</p>
-<h3 id="3.2-Evaluation">3.2 Evaluation<a class="anchor-link" href="#3.2-Evaluation">&#182;</a></h3><p>For evaluation, we looked at average precision score. From our analysis, Random Forest and the Stacked Classifier resulted in the best average precision (0.22 and 0.21 respectively). Several Precision-Recall curves are shown below.</p>
-<h4 id="Bagged-Decision-Tree:">Bagged Decision Tree:<a class="anchor-link" href="#Bagged-Decision-Tree:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/BaggedDT.png?raw=true" alt="baggedDT"></p>
-<h4 id="Bagged-Logistic-Regression:">Bagged Logistic Regression:<a class="anchor-link" href="#Bagged-Logistic-Regression:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/BaggedLR.png?raw=true" alt="baggedLR"></p>
-<h4 id="Gradient-Boosting:">Gradient Boosting:<a class="anchor-link" href="#Gradient-Boosting:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/Gradient.png?raw=true!" alt="GB"></p>
-<h4 id="Random-Forest:">Random Forest:<a class="anchor-link" href="#Random-Forest:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/RandomForest.png?raw=true" alt="RF"></p>
+<p>Then, we tested the following learners from scikit-learn library on our dataset: Decision Tree, Naive Bayes, Linear SVC, Support Vector Machine (SVM), and Logistic Regression using bagging classifiers with number of estimators = 100, since we found that ensemble methods provided better results. We also tried some other ensemble learners such as Random Forest, Boosted Decision Tree and Gradient Boosting. We also ran Stacked Classifier from mlxtend library with Bagged Logistic Regression as the meta classifier and five best classifieres we tested so far. </p>
+<h3 id="3.2-Evaluation">3.2 Evaluation<a class="anchor-link" href="#3.2-Evaluation">&#182;</a></h3><p>For evaluation, we looked at average precision score. From our analysis, Random Forest and the Stacked Classifier resulted in the best average precision (0.22 and 0.21 respectively). Several Precision-Recall curves are shown below. Detailed results from all the classifiers can obtained from <a href="keyphrase classifiers.html">this</a> Jupyter Notebook.</p>
+<h4 id="Bagged-Decision-Tree:">Bagged Decision Tree:<a class="anchor-link" href="#Bagged-Decision-Tree:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/BaggedDT.png?raw=true" alt="baggedDT" width="400"></p>
+<h4 id="Bagged-Logistic-Regression:">Bagged Logistic Regression:<a class="anchor-link" href="#Bagged-Logistic-Regression:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/BaggedLR.png?raw=true" alt="baggedLR" width="400"></p>
+<h4 id="Gradient-Boosting:">Gradient Boosting:<a class="anchor-link" href="#Gradient-Boosting:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/Gradient.png?raw=true!" alt="GB" width="400"></p>
+<h4 id="Random-Forest:">Random Forest:<a class="anchor-link" href="#Random-Forest:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/RandomForest.png?raw=true" alt="RF" width="400"></p>
+<h4 id="Stacked-Classifier-with-Logistic-Regression-as-meta-classifier:">Stacked Classifier with Logistic Regression as meta-classifier:<a class="anchor-link" href="#Stacked-Classifier-with-Logistic-Regression-as-meta-classifier:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/Stacked.png?raw=true" alt="Stacked" width="400"></p>
 
 </div>
 </div>
@@ -13180,12 +13186,15 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="4.-Summarization">4. Summarization<a class="anchor-link" href="#4.-Summarization">&#182;</a></h1><h3 id="4.1-Approach">4.1 Approach<a class="anchor-link" href="#4.1-Approach">&#182;</a></h3><p>Existing automated text summarization techniques can be broadly divided into two categories: extractive and abstractive. Extractive methods extract words and word phrases from the original document to generate a summary, while abstractive methods paraphrase the original text to generate more human-like summaries. For this project, we have applied three extractive techniques on our dataset: NLTK summarizer, TextRank and TextTeaser.</p>
-<p>Plot summaries should not give away spoilers. It is intuitive to assume that major spoilers are more likely to appear near the end of the synopsis. Therefore, we pre-processed our synopses dataset to keep only the first two-thirds of each synopsis. Extractive techniques were applied on this processed dataset.</p>
+<p>Plot summaries should not give away spoilers. It is intuitive to assume that major spoilers are more likely to appear near the end of the synopsis. Therefore, we pre-processed our synopses dataset to keep only the first two-thirds of each synopsis. Extractive techniques were applied on both the processed synopses and original synopses. The processed synopses better results. Therefore, we only show results obtained using the processed synopses.</p>
 <p>Since all three extractive techniques are unsupervised, they do not need any training data to learn explicit features; rather, they exploit the structure of the text itself to determine candidate sentences for summarization. Therefore, we used the complete dataset as the testing dataset.</p>
 <p><strong>NLTK summarizer:</strong> we explored a bag-of-words model using the <a href="https://www.nltk.org/">NLTK</a> library with frequency of words as features. The basic idea is to find the sentences containing higher frequency words and create a summary with those sentences. First, we split the whole synopsis into a list of sentences. Then, we created a processed text from the synopsis by removing all stopwords, special characters, numbers etc. Next, we calculated the weighted frequency of each word in the processed text by dividing its frequency by the frequency of the most occurring word. Later, each sentence in the sentence list was given a score based on the sum of the weighted frequencies of the words the sentence contained. Finally, the five sentences with the highest frequencies were extracted to form the summary.</p>
 <p><strong>TextRank:</strong> In the second approach, we used the <a href="https://github.com/RaRe-Technologies/gensim">Gensim</a> library to implement TextRank, an unsupervised approach based on weighted graphs. In TextRank, the text is preprocessed by removing stop words and a graph is created with sentences as vertices. Every two vertices (sentences) are connected to each other by an edge whose weight is based on how similar the two sentences are. Then the PageRank algorithm (used by Google to rank webpages) is applied on the graph, and vertices (sentences) with the highest PageRank score are selected to form the summaries. In our case, we limited the summaries to 120 words or less.</p>
 <p><strong>TextTeaser:</strong> TextTeaser is a heuristic approach. It associates a score with every sentence, where the score is a linear combination of features extracted from that sentence. The features include number of words present in both title and the sentence, relative position of the sentence in the document, term frequency in the bag-of-words model after removing stopwords etc.</p>
 <h3 id="4.2-Evaluation">4.2 Evaluation<a class="anchor-link" href="#4.2-Evaluation">&#182;</a></h3><p>We used the <a href="http://www.aclweb.org/anthology/W04-1013">Rouge</a> metric to evaluate the text summarization techniques on our dataset. Rouge-N is a word N-gram measure between the auto-generated and the reference gold summary. It is the ratio of the count of N-gram phrases which occur in both the model and gold summary, to the count of all N-gram phrases present in the gold summary. Rouge-L measures longest matching sequence of words using Longest Common Subsequence (LCS), while Rouge-W uses weighted LCS based on consecutive matching sequences of words. We used py-rouge library to calculate the average precision (P), recall (R), and F1-score (F1) using Rouge-1, Rouge-2, Rouge-3, Rouge-4, Rouge-L and Rouge-W metrics. The results are given below.</p>
+<h4 id="NLTK-Summarizer:">NLTK Summarizer:<a class="anchor-link" href="#NLTK-Summarizer:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/nltk.png?raw=true" alt="nltk" width="400"></p>
+<h4 id="TextRank:">TextRank:<a class="anchor-link" href="#TextRank:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/textrank.png?raw=true" alt="textrank" width="400"></p>
+<h4 id="TextTeaser:">TextTeaser:<a class="anchor-link" href="#TextTeaser:">&#182;</a></h4><p><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/textteaser.png?raw=true" alt="textteaser" width="400"></p>
 
 </div>
 </div>
@@ -13193,23 +13202,29 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="5.-Future-Work">5. Future Work<a class="anchor-link" href="#5.-Future-Work">&#182;</a></h1><p>While we attempted to use deep learning techniques using TextSum on our movie corpus, we found that it needed very large dataset (millions) and our dataset of 14,820 movie synopses was not enough to produce good abstractive results. In future, we want to increase our dataset and explore using TextSum in TensorFlow to implement pointer-generator model, a recurrent neural network based approach.</p>
+<h1 id="5.-Future-Work">5. Future Work<a class="anchor-link" href="#5.-Future-Work">&#182;</a></h1><p>While we attempted to use deep learning techniques using TextSum on our movie corpus, we found that it needed very large dataset (millions) and our dataset of 14,820 movie synopses was not enough to produce good abstractive results. In future, we want to increase our dataset and explore using TextSum in TensorFlow to implement pointer-generator model [3], a recurrent neural network based approach.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="References">References<a class="anchor-link" href="#References">&#182;</a></h1><p>[1] Peter D Turney (2002). "Learning Algorithms for Keyphrase Extraction". Information Retrieval. 2 (4): 303–336.<br>
+[2] Ian H. Witten, Gordon W. Paynter, Eibe Frank, Carl Gutwin and Craig G. Nevill-Manning. KEA: Practical Automatic Keyphrase Extraction.<br>
+[3] Abigail See, Peter Liu, Christopher Manning. 2017. Get To The Point: Summarization with Pointer-Generator Networks. In Association for Computational Linguistics.</p>
 
-    </div>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Who-Did-What">Who Did What<a class="anchor-link" href="#Who-Did-What">&#182;</a></h3><p><strong>Maitraye Das:</strong> Data cleaning and preprocessing, feature engineering for keyphrase extraction, keyphrase model evaluation, final paper, website.</p>
+<p><strong>Abir Saha:</strong> Data cleaning and preprocessing, summarization models testing and evaluation, final paper, website.</p>
 
+</div>
+</div>
 </div>
     </div>
   </div>
