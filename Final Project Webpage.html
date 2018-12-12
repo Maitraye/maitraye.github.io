@@ -13081,7 +13081,7 @@ div#notebook {
     display: block;
     page-break-inside: avoid; 
   }
-  figure figcaption {
+  figure .center {
     text-align: center;
   }
 }
@@ -13132,7 +13132,7 @@ div#notebook {
 <h1 id="Abstract">Abstract<a class="anchor-link" href="#Abstract">&#182;</a></h1><p>In this project, we have applied machine learning (ML) and natural language processing (NLP) techniques to automatically generate plot keyphrases and summaries from detailed movie synopses produced by users of the Internet Movie Database (IMDb) and Wikipedia. To build our build our synopsis corpus, we used the MPST dataset, which contains a set of 14,828 movie synopses produced by the users of IMDb and Wikipedia. We collected the user generated summaries of 14,820 of these movies by scraping IMDb. We also used the Open Movie Database (OMDb) to collect the user generated keyphrases of 11,664 movies present in our synopsis corpus.</p>
 <p>We defined the keyphrase extraction task as a binary classification problem: we generated candidate phrases and calculated nine attributes of each phrase from our synopses corpus. The final attribute classifies whether the phrase is a ‘keyphrase’ or ‘non-keyphrase’ by matching with user-generated keyphrases. We then divide our dataset into training and test sets and ran several supervised classifiers including Decision Tree, Naive Bayes, Linear SVC, SVM, Logistic Regression, Random Forest, Boosted Decision Tree and Gradient Boosting. We also ran Stacked Classifier on the best five models with Logistic Regression as the meta-classifier. Stacked Classifier and Random Forest both resulted in the highest average precision 0.22. For summarization, we performed extractive and unsupervised techniques on the user-generated synopses using NLTK, TextRank and TextTeaser. Using the Rouge metric, we compared the machine-generated summaries to the human generated summaries in our dataset. TextTeaser gives the best Precision in terms of Rouge-1 (0.27) and Rouge-2 (0.048), while TextRank gives the best Precision (0.22), Recall (0.32) and F1-score (0.24) in terms of Rouge-l.</p>
 <figure><img src="https://github.com/Maitraye/maitraye.github.io/blob/master/MLImage/Stacked.png?raw=true" alt="" width = "400">
-  <figcaption>
+  <figcaption class="center">
  Precision-Recall Curve for the Stacked Classifier
  </figcaption>
 </figure>
