@@ -73,20 +73,13 @@ h2 {
   text-decoration: none;
 }
 
-#sideNav .navbar-nav .nav-item .nav-link:hover, 
-#sideNav .navbar-nav .nav-item .nav-link:focus,
-#sideNav .navbar-nav .nav-link.active {
-  font-size: 125%;
-  text-decoration: underline;
-
-}
-
-/*#sideNav .navbar-nav .show > .nav-link,
+#sideNav .navbar-nav .show > .nav-link,
 #sideNav .navbar-nav .active > .nav-link,
 #sideNav .navbar-nav .nav-link.show,
 #sideNav .navbar-nav .nav-link.active {
+  font-size: 125%;
   text-decoration: underline;
-}*/
+}
 
 @media (min-width: 992px) {
   #sideNav {
