@@ -38,7 +38,7 @@
 
   $('ul.term-list').each(function(){
     if( $(this).find('li').length > 4){    
-      $('li', this).eq(4).nextAll().hide().addClass('toggleable');
+      $('li', this).eq(3).nextAll().hide().addClass('toggleable');
       $(this).append('<li class="cursorShown">See More...</li>');    
     }
     $(this).on('click','.cursorShown', toggleShow);
