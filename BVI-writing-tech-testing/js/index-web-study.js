@@ -34,12 +34,12 @@ function playSound() {
         stimulus_played = true;
     }
     else{
-        if (stimulus_paused == true) {
-            sound.play();
-            stimulus_paused = false;
+        if (stimulus_paused == false) {
+            console.log("already played!");
         }
         else{
-            console.log("already played!");
+            sound.play();
+            stimulus_paused = false;
         }
     }
 }
