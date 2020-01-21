@@ -2,6 +2,7 @@ var round = 0;
 var participantNo = 0;
 var example_played = false;
 var stimulus_played = false;
+var stimulus_paused = false;
 
 const sound = new Audio();
 
@@ -33,12 +34,17 @@ function playSound() {
         stimulus_played = true;
     }
     else{
+        if (stimulus_paused == true) {
+            sound.play();
+            stimulus_paused = false;
+        }
         console.log("already played!");
     }
 }
 
 function stopSound(){
     sound.pause();
+    stimulus_paused = true;
 }
 
 function goNextRound(){
