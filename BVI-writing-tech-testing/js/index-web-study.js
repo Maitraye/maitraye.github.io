@@ -1,8 +1,9 @@
 var round = 0;
-var participantNo = 1;
+var participantNo = 0;
 var example_played = false;
+var stimulus_played = false;
 
-const sound = new Audio()
+const sound = new Audio();
 
 function setPtNo(){
     // set unique participant number from backend
@@ -27,24 +28,32 @@ shortcut.add("s", stopSound);
 shortcut.add("n", goNextRound);
 
 function playSound() {
-    sound.play()
+    if (stimulus_played == false) {
+        sound.play();
+        stimulus_played = true;
+    }
+    else{
+        console.log("already played!");
+    }
 }
 
 function stopSound(){
-    sound.pause()
+    sound.pause();
 }
 
 function goNextRound(){
     // this function should be triggered with the next button
-
     if (!example_played){
         round += 1;
     }
     console.log ("round: " + round)
     filenameOnly = selectStimulus()
     console.log (filenameOnly)
+
+    stimulus_played = false;
+
     // get the name of the audio to play
-    sound.src = "audio/" + filenameOnly + ".wav"
+    sound.src = "audio/" + filenameOnly + ".wav";
 }
 
 function selectStimulus(){
@@ -54,7 +63,6 @@ function selectStimulus(){
     var complexity = "";
     var stimulus = "";
     var foldername = "";
-
 
     //part 1
     if (round <= 6){
