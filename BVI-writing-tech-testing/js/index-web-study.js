@@ -38,7 +38,9 @@ function playSound() {
             sound.play();
             stimulus_paused = false;
         }
-        console.log("already played!");
+        else{
+            console.log("already played!");
+        }
     }
 }
 
