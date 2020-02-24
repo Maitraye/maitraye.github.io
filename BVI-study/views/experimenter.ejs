@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BVI web study </title>
+</head>
+
+<body>
+
+	<h1>Collaborative Writing Pilot Study</h1>
+
+	<h3>Participant No: <%= participantNo %> </h3>
+
+	<form action="/submitParticipantNo" method= "POST">
+		<input type="text" name="participantNo" placeholder="Participant No">
+		<button>Submit</button>
+	</form>
+
+	<h3>Current audio filename: <%= fileName %> </h3>
+
+	<form action="/submitRound" method= "POST">
+		<input type="text" name="round" placeholder="Round No">
+		<button>Submit</button>
+	</form>
+
+</body>
+</html>
