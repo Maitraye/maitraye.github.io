@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
 <body>
+	<script type="text/javascript" src="js/shortcut.js"></script>
+	<script type="text/javascript" src="js/index-web-study.js"></script>
 
 	<h1>Collaborative Writing Pilot Study</h1>
 
 	<h3>Participant No: <span id="Participant">0</span></h3>
+	<input type="number" placeholder="Participant No" id="participantNo">
+    <button type="button" onclick="setPtNo();">Submit</button> 
+    <br>
 
-	<button onclick="playSound()">Play</button>
+	<h3>Round No: <span id="Round">0</span>    Audio file name: <span id="File">Example</span></h3> 
+	<input type="text" placeholder="Round No" id="roundNo">
+    <button type="button" onclick="goNextRound()">Next</button>
+	
+	<br> <br>
+    <button onclick="playSound()">Play</button>
 	<button onclick="stopSound()">Stop</button>
-	<button onclick="goNextRound()">Next</button>
 
-	<script type="text/javascript" src="js/shortcut.js"></script>
-	<script type="text/javascript" src="js/index-web-study.js"></script>
+
+	
 
 </body>
 </html>
