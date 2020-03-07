@@ -4,8 +4,8 @@ var filenames = {
     1: ["Example", "Ex-part1-T1", "Berlin-low", "Chena-high", 
         "Ex-part1-T2", "Paris-high", "Blue_lagoon-low", 
         "Ex-part1-T3", "Madrid-low", "Venice-high",
-        "Ex-part2-T1", "Dolphins-low", "Hummingbirds-high",
-        "Ex-part2-T2", "Penguins-high", "Heron-low",
+        "Ex-part2-T1", "Dolphins-low", "Heron-high",
+        "Ex-part2-T2", "Penguins-high", "Hummingbirds-low",
         "Ex-part3-T1", "Rhinos-low", "Woodpeckers-high",
         "Ex-part3-T2", "Beluga_whales-high", "Kingfishers-low",
         "Ex-part3-T3", "Dung_beetle-low", "Ostrich-high"],
@@ -13,8 +13,8 @@ var filenames = {
     2: ["Example", "Ex-part1-T2", "Paris-low", "Blue_lagoon-high",
         "Ex-part1-T3", "Madrid-high", "Venice-low",
         "Ex-part1-T1", "Berlin-high", "Chena-low",
-        "Ex-part2-T2", "Penguins-low", "Heron-high",
-        "Ex-part2-T1", "Dolphins-high", "Hummingbirds-low",
+        "Ex-part2-T2", "Penguins-low", "Hummingbirds-high",
+        "Ex-part2-T1", "Dolphins-high", "Heron-low",
         "Ex-part3-T2", "Beluga_whales-low", "Kingfishers-high",
         "Ex-part3-T3", "Dung_beetle-high", "Ostrich-low",
         "Ex-part3-T1", "Rhinos-high", "Woodpeckers-low"],
@@ -22,8 +22,8 @@ var filenames = {
     3: ["Example", "Ex-part1-T3", "Madrid-low", "Venice-high",
         "Ex-part1-T1", "Berlin-high", "Chena-low",
         "Ex-part1-T2", "Paris-low", "Blue_lagoon-high",
-        "Ex-part2-T1", "Dolphins-low", "Hummingbirds-high",
-        "Ex-part2-T2", "Penguins-high", "Heron-low",
+        "Ex-part2-T1", "Dolphins-low", "Heron-high",
+        "Ex-part2-T2", "Penguins-high", "Hummingbirds-low",
         "Ex-part3-T3", "Dung_beetle-low", "Ostrich-high",
         "Ex-part3-T1", "Rhinos-high", "Woodpeckers-low",
         "Ex-part3-T2", "Beluga_whales-low", "Kingfishers-high"],
@@ -31,8 +31,8 @@ var filenames = {
     4: ["Example",  "Ex-part1-T3", "Madrid-low", "Venice-high",  
         "Ex-part1-T2", "Paris-high", "Blue_lagoon-low", 
         "Ex-part1-T1", "Berlin-low", "Chena-high",
-        "Ex-part2-T2", "Penguins-low", "Heron-high",
-        "Ex-part2-T1", "Dolphins-high", "Hummingbirds-low",
+        "Ex-part2-T2", "Penguins-low", "Hummingbirds-high",
+        "Ex-part2-T1", "Dolphins-high", "Heron-low",
         "Ex-part3-T3", "Dung_beetle-low", "Ostrich-high",
         "Ex-part3-T2", "Beluga_whales-high", "Kingfishers-low",
         "Ex-part3-T1", "Rhinos-low", "Woodpeckers-high"],
@@ -40,8 +40,8 @@ var filenames = {
     5: ["Example", "Ex-part1-T2", "Paris-low", "Blue_lagoon-high",
         "Ex-part1-T1", "Berlin-high", "Chena-low",
         "Ex-part1-T3", "Madrid-high", "Venice-low",
-        "Ex-part2-T1", "Dolphins-low", "Hummingbirds-high",
-        "Ex-part2-T2", "Penguins-high", "Heron-low",
+        "Ex-part2-T1", "Dolphins-low", "Heron-high",
+        "Ex-part2-T2", "Penguins-high", "Hummingbirds-low",
         "Ex-part3-T2", "Beluga_whales-low", "Kingfishers-high",
         "Ex-part3-T1", "Rhinos-high", "Woodpeckers-low",
         "Ex-part3-T3", "Dung_beetle-high", "Ostrich-low"],
@@ -49,8 +49,8 @@ var filenames = {
     0: ["Example", "Ex-part1-T1", "Berlin-low", "Chena-high",
         "Ex-part1-T3", "Madrid-high", "Venice-low",
         "Ex-part1-T2", "Paris-high", "Blue_lagoon-low",
-        "Ex-part2-T2", "Penguins-low", "Heron-high",
-        "Ex-part2-T1", "Dolphins-high", "Hummingbirds-low",
+        "Ex-part2-T2", "Penguins-low", "Hummingbirds-high",
+        "Ex-part2-T1", "Dolphins-high", "Heron-low",
         "Ex-part3-T1", "Rhinos-low", "Woodpeckers-high",
         "Ex-part3-T3", "Dung_beetle-high", "Ostrich-low",
         "Ex-part3-T2", "Beluga_whales-high", "Kingfishers-low"]
@@ -258,7 +258,7 @@ function goNextRound(){
 //                 }
 //             }
 //             else{
-//                 stimulus = 'Hummingbirds';
+//                 stimulus = 'Heron';
 //             }
 //         }
 //         else if (commentMarkupMode == 'Signposting_voice_coded'){
@@ -273,7 +273,7 @@ function goNextRound(){
 //                 }
 //             }
 //             else{
-//                 stimulus = 'Heron';
+//                 stimulus = 'Hummingbirds';
 //             }
 //         }
 
