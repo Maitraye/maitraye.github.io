@@ -1,8 +1,13 @@
 body {
   /*font-family: 'Open Sans', serif;*/
   font-family: 'Raleway', sans-serif;
+  font-size: 0.97rem;
   padding-top: 54px;
   color: #242526;
+}
+
+.justify {
+  text-align: justify;
 }
 
 @media (min-width: 992px) {
