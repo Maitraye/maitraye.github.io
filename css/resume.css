@@ -17,7 +17,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Saira Extra Condensed', serif;
+  /*font-family: 'Saira Extra Condensed', serif;*/
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   color: #1a1b1c;
@@ -35,7 +36,8 @@ h2 {
 .subheading {
   text-transform: uppercase;
   font-weight: 500;
-  font-family: 'Saira Extra Condensed', serif;
+  /*font-family: 'Saira Extra Condensed', serif;*/
+  font-family: 'Raleway', sans-serif;
   font-size: 1.35rem;
 }
 
