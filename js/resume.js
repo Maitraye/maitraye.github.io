@@ -37,8 +37,8 @@
   });
 
   $('ul.term-list').each(function(){
-    if( $(this).find('li').length > 4){    
-      $('li', this).eq(3).nextAll().hide().addClass('toggleable');
+    if( $(this).find('li').length > 10){    
+      $('li', this).eq(9).nextAll().hide().addClass('toggleable');
       $(this).append('<li class="cursorShown">See More...</li>');    
     }
     $(this).on('click','.cursorShown', toggleShow);
