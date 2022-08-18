@@ -1,0 +1,428 @@
+1
+0:00:02,800 --> 0:00:06.160
+In this demo we will explore the different features available in the collab extension.
+
+2
+0:00:06,720 --> 0:00:08.200
+On the screen, there's a one page Google Doc
+
+3
+0:00:08,200 --> 0:00:09.800
+with about six paragraphs.
+
+4
+0:00:10,000 --> 0:00:13.400
+There are several comments and suggested edits in the document.
+
+5
+0:00:13,400 --> 0:00:15.920
+And two coauthors are right now active in this document.
+
+6
+0:00:16,640 --> 0:00:20.160
+First, we want to know who is active in 
+
+7
+
+0:00:20.160,0:00:22.903
+
+8
+K
+
+
+9
+Screen reader: anonymous walrus is on page one paragraph five and line one
+
+
+10
+Screen reader: anonymous liger is on page one paragraph two and line one
+
+
+11
+So the screen reader told us the location of the coauthors
+
+
+12
+I want to know what my coauthors are doing,
+
+
+13
+However I don't want to lose my cursor 
+position.
+
+14
+0:00:39,000 --> 0:00:42.000
+To do that, I can press ctrl shift H
+
+15
+0:00:42,880 --> 0:00:44.212
+Screen reader: Following anonymous walrus
+
+16
+0:00:44,212 --> 0:00:48.240
+The screen reader told me that I'm now following anonymous walrus
+
+17
+0:00:48,880 --> 0:00:52.160
+I can hear a typing sound as anonymous walrus writes
+
+18
+0:00:52,160 --> 0:00:57.440
+which means that I can get a sense about when they're contributing to a document
+
+19
+0:00:57,440 --> 0:00:59.680
+and when they're off doing something else.
+
+20
+0:01:02,240 --> 0:01:07.520
+[Typing sound]
+
+21
+0:01:07,520 --> 0:01:10.218
+Screen reader: Hello world. This is a test sentence.
+
+22
+0:01:10,218 --> 0:01:15.720
+After they finish writing a line, I can hear what they just wrote on the past line.
+
+23
+0:01:15,720 --> 0:01:20.851
+Now I want to jump to anonymous walrus's location to explore these edits more.
+
+24
+0:01:20,851 --> 0:01:23.655
+I can do that by pressing control shift one.
+
+25
+0:01:23,655 --> 0:01:29.600
+Screen reader: Moved cursor to anonymous walrus's location at page one paragraph six and line one.
+
+26
+0:01:31,040 --> 0:01:35.680
+And here my screen reader told me that I've moved to anonymous walrus's cursor location
+
+27
+0:01:35,680 --> 0:01:40.400
+I can repeatedly press ctrl shift H to rotate through the list of all active coauthors
+
+28
+0:01:40,400 --> 0:01:45.600
+and select who I want to follow and eventually stop following any other coauthors.
+
+29
+0:01:45,600 --> 0:01:48.960
+Now I want to explore the relative proximity cues which notifies me
+
+30
+0:01:48,960 --> 0:01:53.280
+where my coauthors are relative to my location so that I don't type over other's edits.
+
+31
+0:01:53,280 --> 0:01:56.009
+We have four different ways to get relative proximity notifications.
+
+32
+0:01:56,009 --> 0:01:58.209
+I'll first select the spoken announcement option.
+
+33
+0:01:58,209 --> 0:02:01.840
+Screen reader: spoken announcement 
+
+34
+
+0:02:01.840,0:02:07.000
+
+35
+
+0:02:07.000,0:02:09.040
+
+36
+
+0:02:10.560,0:02:12.508
+
+37
+
+0:02:12.508,0:02:15.520
+
+38
+
+0:02:16.400,0:02:19.000
+
+39
+
+0:02:19.000,0:02:23.019
+
+40
+
+0:02:23.019,0:02:26.320
+
+41
+
+0:02:27.840,0:02:30.531
+
+42
+
+0:02:30.531,0:02:35.840
+
+43
+
+0:02:37.840,0:02:45.120
+
+44
+
+0:02:45.120,0:02:51.000
+
+45
+
+0:02:51.000,0:02:57.040
+
+46
+
+0:02:57.040,0:03:00.027
+
+47
+features,
+
+
+48
+So -->  I'm going to select musical note pitch change in the relative proximity setting,
+
+
+49
+Screen reader: musical note pitch change selected,
+
+
+50
+Now -->  if one of my coauthors such 
+as anonymous walrus enters my paragraph, I'll hear a musical note
+
+51
+0:03:18,000 --> 0:03:24.320
+If they come to the line where I have my cursor, a slightly higher pitched note occurs.
+
+52
+0:03:24,320 --> 0:03:31.360
+If they place their cursor at the exact same spot where I am, an even higher pitched note happens.
+
+53
+0:03:31,360 --> 0:03:36.320
+If they move away from my paragraph, then I hear a lower pitched note.
+
+54
+0:03:36,320 --> 0:03:38.800
+What if anonymous liger enters my paragraph?
+
+55
+0:03:41,680 --> 0:03:45.120
+So we hear tones of different 
+
+56
+
+0:03:45.120,0:03:51.360
+
+57
+that is distinct from anonymous walrus's,
+
+
+58
+So far in our exploration -->  the pitch of the 
+musical note changed with
+
+59
+0:03:56,000 --> 0:03:57.902
+relative proximity between our cursors.
+
+60
+0:03:57,902 --> 0:04:01.627
+So the closer the coauthor comes to my cursor, the higher the pitch gets.
+
+61
+0:04:01,627 --> 0:04:05.296
+What will happen though if the note 
+
+62
+
+0:04:05.296,0:04:08.507
+
+63
+
+0:04:08.507,0:04:12.485
+
+64
+
+0:04:12.485,0:04:19.160
+
+65
+
+0:04:19.160,0:04:24.360
+
+66
+
+0:04:24.360,0:04:31.440
+
+67
+
+0:04:31.440,0:04:35.760
+
+68
+
+0:04:36.560,0:04:40.240
+
+69
+
+0:04:40.240,0:04:43.944
+
+70
+
+0:04:43.944,0:04:48.199
+
+71
+
+0:04:48.199,0:04:52.000
+
+72
+cursors,
+
+
+73
+To explore this feature -->  I'll first go to the audio scroll bar settings,
+
+
+74
+In the presentations options -->  I'll select paragraph scroll bar
+
+
+75
+because I want to navigate by paragraph,
+
+
+76
+Screen reader: Presentation option, Paragraph scroll bar selected.
+
+
+77
+In the scroll bar option -->  comments are selected by default,
+
+
+78
+And in the scroll bar sound option -->  we have pitch selected by default,
+
+
+79
+Now I'll press ctrl shift U to invoke the audio scroll bar,
+
+
+80
+Screen reader: audio scroll bar turned on
+
+
+81
+The screen reader told me that the audio scroll bar is turned on,
+
+
+82
+Now I'll press the up or down arrow key to get an audio indication of which paragraph has more or less comments,
+
+
+83
+For instance -->  the second paragraph has one comment, so we hear this sound
+
+
+84
+The next paragraph has two comments, 
+So we hear a higher pitched sound.
+
+85
+0:05:38,880 --> 0:05:44.720
+And then the next paragraph has four comments, and so we hear a much higher pitched sound.
+
+86
+0:05:46,560 --> 0:05:51.840
+If we go to the last paragraph, there's 
+
+87
+
+0:05:54.720,0:05:57.341
+
+88
+
+0:05:57.341,0:06:01.200
+
+89
+
+0:06:01.200,0:06:05.840
+
+90
+
+0:06:07.040,0:06:09.680
+
+91
+about the comments or edits in the paragraph
+
+
+92
+I can press ctrl M after hearing the tone,
+
+
+93
+Screen reader: page one paragraph seven has two comments -->  zero 
+other cursors, and four edits.
+
+94
+0:06:19,000 --> 0:06:23.080
+And the screen reader told me the number of edits, comments, and cursors in the paragraph.
+
+95
+0:06:23,080 --> 0:06:28.953
+If I want to move my cursor to a paragraph to explore in more detail, I can press ctrl shift one.
+
+96
+0:06:28,953 --> 0:06:31.780
+Screen reader: Moved to page one paragraph seven.
+
+97
+0:06:31,780 --> 0:06:35.400
+I also want to check what happens if we 
+
+98
+
+0:06:35.400,0:06:38.289
+
+99
+
+0:06:38.289,0:06:41.120
+
+100
+
+0:06:41.120,0:06:43.800
+
+101
+
+0:06:43.800,0:06:50.113
+
+102
+keys to get an audio indication of which paragraph has more or less comments,
+
+
+103
+For example -->  the second paragraph has one comment, so we hear one tone,
+
+
+104
+The next paragraph has two comments -->  so we hear two tones,
+
+
+105
+And then the next paragraph has 
+four comments. So we hear four tones.
+
+106
+0:07:10,880 --> 0:07:13.580
+For five or more comments, we'll just hear five tones.
+
+107
+0:07:13,580 --> 0:07:19.600
+So this way, using the audio scroll bar we can get a quick overview of how comments or edits are distributed in the document.
+
