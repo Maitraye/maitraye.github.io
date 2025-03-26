@@ -37,9 +37,9 @@
   });
 
   $('ul.term-list').each(function(){
-    if( $(this).find('li').length > 5){    
-      $('li', this).eq(4).nextAll().hide().addClass('toggleable');
-      $(this).append('<li class="cursorShown">See More...</li>');    
+    if( $(this).find('li').length > 8){    
+      $('li', this).eq(7).nextAll().hide().addClass('toggleable');
+      $(this).append('<br> <li class="cursorShown">See More...</li>');    
     }
     $(this).on('click','.cursorShown', toggleShow);
   });
